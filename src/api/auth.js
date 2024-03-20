@@ -5,7 +5,7 @@ import { postRequest } from "./request";
 const authPath = "/auth";
 
 function signup(payload) {
-  console.log(authPath, payload)
+  console.log("Path and Payload ",authPath, payload)
   return postRequest(`${authPath}/signup`, payload);
 }
 

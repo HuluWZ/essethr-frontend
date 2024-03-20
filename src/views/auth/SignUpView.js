@@ -115,6 +115,7 @@ const SignUp = () => {
 
   const handleSignup = (info) => {
     dispatch({ type: types.REQUESTING });
+    console.log(" API Info ",info)
     API.signup(info)
       .then(({ success, message, error }) => {
         if (success) {
