@@ -8,7 +8,6 @@
 //     }, state);
 //   };
 // };
-require("dotenv").config()
 
 export function combineReducers(reducers) {
   // First get an array with all the keys of the reducers (the reducer names)
@@ -41,6 +40,8 @@ let localeContext = require("./locale/Context");
 let onlineContext = require("./online/Context");
 let orgContext = require("./org/Context");
 let themeContext = require("./theme/Context");
+
+console.log(" ENV ", process.env.NODE_ENV);
 
 if (process.env.NODE_ENV !== "production") {
   module.hot.accept(authContext, () => {
