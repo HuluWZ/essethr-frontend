@@ -52,11 +52,14 @@ export function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
+  console.log(" Registering valida sw ",swUrl,config)
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
+      console.log(" Registration ",registration)
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
+        console.log(" Installing worker ",installingWorker,installingWorker.state)
         if (installingWorker == null) {
           return;
         }
@@ -66,7 +69,7 @@ function registerValidSW(swUrl, config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
-
+               console.log(" excute callback",config,config.onUpdate)
               // Execute callback
               if (config && config.onUpdate) {
                 config.onUpdate(registration);
@@ -75,7 +78,7 @@ function registerValidSW(swUrl, config) {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              console.log("Content is cached for offline use.");
+              console.log("Content is cached for offline use.",config, config.onSuccess);
 
               // Execute callback
               if (config && config.onSuccess) {
